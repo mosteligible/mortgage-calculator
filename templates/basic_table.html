@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>House Price: {{ housePrice }}</h2>
+  <h2>Down Payment: {{ downPayment }}</h2>
+  <h2>Amortization Period: {{ amortizationPeriod }}</h2>
+  <h2>Annual Interest Rate: {{ annualIR }}</h2>
+    <table id="data" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Month No</th>
+          <th>Mortgage Paid</th>
+          <th>Contribution to Principal (CTP)</th>
+          <th>% CTP</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for mortgagedata in mortgageInfo %}
+          <tr>
+            <td>{{ mortgagedata[0] }}</td>
+            <td>{{ '%0.2f' % mortgagedata[1]|float }}</td>
+            <td>{{ '%0.2f' % mortgagedata[2]|float }}</td>
+            <td>{{ '%0.4f' % mortgagedata[3]|float }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        columns: [
+          null,
+          {searchable: true},
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          null],
+      });
+    });
+  </script>
+{% endblock %}

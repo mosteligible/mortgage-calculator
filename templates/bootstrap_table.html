@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>House Price: {{ housePrice }}</h2>
+  <h2>Down Payment: {{ downPayment }}</h2>
+  <h2>Amortization Period: {{ amortizationPeriod }}</h2>
+  <h2>Annual Interest Rate: {{ annualIR }}</h2>
+    <table id="data" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+          <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.address }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.email }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

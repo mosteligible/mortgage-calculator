@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">House Price</span>
+      <input type="number" step="500.0" name="houseprice" class="form-control" id="exampleFormControlInput1" placeholder="$500000">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Downpayment Percentage</span>
+      <input type="number" class="form-control" name="downpaymentPercent" placeholder="20%" aria-label="Downpayment" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Amortization Period</span>
+      <select class="form-select" name="amortPeriod" aria-label="Default select Amortization Period">
+        <option selected>Select an Amortization Period</option>      
+        <option value="20">20 Years</option>
+        <option value="25">25 Years</option>
+        <option value="30">30 Years</option>
+      </select>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Annual Interest Rate</span>
+      <select class="form-select" name="annualInterestRate" aria-label="Default select interest rate">
+        <option selected>Select an interest rate</option>      
+        <option>0.5</option>
+        <option>1</option>
+        <option>1.5</option>
+        <option>2.0</option>
+        <option>2.5</option>
+        <option>3.0</option>
+        <option>3.5</option>
+        <option>4.0</option>
+        <option>5.5</option>
+        <option>5.75</option>
+        <option>6.0</option>
+        <option>6.5</option>
+        <option>6.75</option>
+        <option>7</option>
+      </select>
+    </div>
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary" type="button">Submit</button>
+    </div>
+  </form>
+{% endblock %}
