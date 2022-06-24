@@ -9,19 +9,19 @@ app = Flask(__name__)
 @app.route('/', methods=["GET", "POST"])
 def index():
     if request.method == "GET":
-        return render_template("home.html", title="Bootstrap Form")
+        return render_template("home.html", title="Mortgage Information Form")
     elif request.method == "POST":
         downpayment = float(request.form.get("downpaymentPercent"))
         houseprice = float(request.form.get("houseprice"))
         annualInterestRate = float(request.form.get("annualInterestRate"))
         amortPeriod = int(request.form.get("amortPeriod"))
+        months = [i+1 for i in range(amortPeriod*12)]
 
         mortgageInfo = Mortgage(housePrice=houseprice,
                                 downpaymentPercent=downpayment,
                                 annualInterestRate=annualInterestRate,
                                 paidOverYears=amortPeriod)
 
-        months = [i+1 for i in range(amortPeriod*12+1)]
         paymentDetails = [i for i in zip(
             months,
             mortgageInfo.mortgagePerMonth,
@@ -29,7 +29,7 @@ def index():
             mortgageInfo.monthlyContributionsToPrincipalPercentages
             )]
 
-        return render_template("basic_table.html", title="Mortgage Details",
+        return render_template("basic_table.html", title="Mortgage Payment Details Breakdown",
                                housePrice=houseprice,
                                downPayment=mortgageInfo.downpayment,
                                amortizationPeriod=amortPeriod,
