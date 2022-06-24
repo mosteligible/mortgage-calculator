@@ -1,10 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>House Price: {{ housePrice }}</h2>
-  <h2>Down Payment: {{ downPayment }}</h2>
-  <h2>Amortization Period: {{ amortizationPeriod }}</h2>
-  <h2>Annual Interest Rate: {{ annualIR }}</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        House Price: {{ housePrice }}
+      </div>
+      <div class="col">
+        Down Payment: {{ downPayment }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        Amortization Period: {{ amortizationPeriod }}
+      </div>
+      <div class="col">
+        Annual Interest Rate: {{ annualIR }}
+      </div>
+    </div>
+  </div>
+  <div class="input-group">
+    <select class="form-select" id="inputGroupSelect04" aria-label="Select the type of chart to build">
+      <option selected>Choose chart type</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <button class="btn btn-outline-secondary" type="button">Button</button>
+  </div>
     <table id="data" class="table table-striped">
       <thead>
         <tr>
