@@ -28,6 +28,13 @@
     </select>
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
+  <div class="chart" id="LinePlot">
+    Hereth be the grapheth!
+    <script>
+        var graphs = {{ line_plot }};
+        Plotly.plot('bargraph', graphs, {});
+    </script>
+  </div>
     <table id="data" class="table table-striped">
       <thead>
         <tr>

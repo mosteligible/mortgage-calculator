@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 
 from Mortgage import Mortgage
+from utils_mortgage_calc import create_line_plot
 
 
 app = Flask(__name__)
@@ -28,13 +29,15 @@ def index():
             mortgageInfo.monthlyContributionsToPrincipal,
             mortgageInfo.monthlyContributionsToPrincipalPercentages
             )]
+        line_graph = create_line_plot(mortgageInfo)
 
         return render_template("basic_table.html", title="Mortgage Payment Details Breakdown",
                                housePrice=houseprice,
                                downPayment=mortgageInfo.downpayment,
                                amortizationPeriod=amortPeriod,
                                annualIR=annualInterestRate,
-                               mortgageInfo=paymentDetails
+                               mortgageInfo=paymentDetails,
+                               line_plot=line_graph
                                )
     else:
         return "<h1>Something Wrong!</h1>"
